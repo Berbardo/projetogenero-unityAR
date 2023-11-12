@@ -54,13 +54,15 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
         void PlaceObjectAt(object sender, ARRaycastHit hitPose)
         {
+            float angle = Mathf.Atan2(Camera.main.transform.position.x - hitPose.pose.position.x, Camera.main.transform.position.z - hitPose.pose.position.z) * Mathf.Rad2Deg;
             if (m_SpawnedObject == null)
             {
-                m_SpawnedObject = Instantiate(m_PrefabToPlace, hitPose.pose.position, hitPose.pose.rotation, hitPose.trackable.transform.parent);
+                m_SpawnedObject = Instantiate(m_PrefabToPlace, hitPose.pose.position, Quaternion.Euler(new Vector3(0, angle, 0)), hitPose.trackable.transform.parent);
             }
             else
             {
                 m_SpawnedObject.transform.position = hitPose.pose.position;
+                m_SpawnedObject.transform.rotation = Quaternion.Euler(new Vector3(0, angle, 0));
                 m_SpawnedObject.transform.parent = hitPose.trackable.transform.parent;
             }
         }
