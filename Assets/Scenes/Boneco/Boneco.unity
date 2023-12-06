@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89aa529c93736ab4db6dd582f742f591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PrefabToPlace: {fileID: 919132149155446097, guid: 768c172746a7fe544b304dc05bf75bbc,
+  m_PrefabToPlace: {fileID: 545811747011716869, guid: 70da209d728720d448d92c9fafb791b9,
     type: 3}
   m_RaycastHitEvent: {fileID: 11400000, guid: 6ddaf6abbb6e3f6489a5badc62d646ef, type: 2}
 --- !u!114 &611792961
@@ -782,6 +782,7 @@ GameObject:
   - component: {fileID: 974157274}
   - component: {fileID: 974157276}
   - component: {fileID: 974157275}
+  - component: {fileID: 974157277}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -848,6 +849,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 974157273}
   m_CullTransparentMesh: 0
+--- !u!114 &974157277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974157273}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ab8fdb88566f9479d0aacd5a6fc4ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1002339225
 GameObject:
   m_ObjectHideFlags: 0
