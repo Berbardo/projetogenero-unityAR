@@ -19,6 +19,8 @@ public class MenuController : MonoBehaviour
     private GameObject sexo;
     private GameObject orientacao;
 
+    Animator boneco_animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,7 @@ public class MenuController : MonoBehaviour
         identidade = GameObject.Find("Identity").gameObject;
         sexo = GameObject.Find("Sex").gameObject;
         orientacao = GameObject.Find("Orientation").gameObject;
+
     }
 
     public void Confirmar() {
@@ -46,6 +49,8 @@ public class MenuController : MonoBehaviour
         identidade.GetComponent<RawImage>().enabled = true;
         sexo.GetComponent<RawImage>().enabled = true;
         orientacao.GetComponent<RawImage>().enabled = true;
+        boneco_animator = GameObject.FindWithTag("boneco").GetComponent<Animator>();
+
     }
 
     public void Reset() {
@@ -60,26 +65,46 @@ public class MenuController : MonoBehaviour
         identidade.GetComponent<RawImage>().enabled = false;
         sexo.GetComponent<RawImage>().enabled = false;
         orientacao.GetComponent<RawImage>().enabled = false;
+
+        boneco_animator.ResetTrigger("heart_trigger");
+        boneco_animator.ResetTrigger("head_trigger");
+        boneco_animator.SetTrigger("idle_trigger");
     }
 
     public void Identidade() {
         bar_text.GetComponent<Text>().text = "Identidade de Gênero";
         text.GetComponent<TextMeshProUGUI>().text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
+        boneco_animator.ResetTrigger("heart_trigger");
+        boneco_animator.SetTrigger("head_trigger");
+        boneco_animator.ResetTrigger("idle_trigger");
     }
 
     public void Orientacao() {
         bar_text.GetComponent<Text>().text = "Orientação Sexual";
         text.GetComponent<TextMeshProUGUI>().text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
+        boneco_animator.SetTrigger("heart_trigger");
+        boneco_animator.ResetTrigger("head_trigger");
+        boneco_animator.ResetTrigger("idle_trigger");
     }
 
     public void Sexo() {
         bar_text.GetComponent<Text>().text = "Sexo";
         text.GetComponent<TextMeshProUGUI>().text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
+        boneco_animator.ResetTrigger("heart_trigger");
+        boneco_animator.ResetTrigger("head_trigger");
+        boneco_animator.SetTrigger("idle_trigger");
     }
 
     public void Expressao() {
         bar_text.GetComponent<Text>().text = "Expressão de Gênero";
         text.GetComponent<TextMeshProUGUI>().text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
+        boneco_animator.ResetTrigger("heart_trigger");
+        boneco_animator.ResetTrigger("head_trigger");
+        boneco_animator.SetTrigger("idle_trigger");
     }
 
     // Update is called once per frame
