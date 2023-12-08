@@ -15,8 +15,8 @@ public class TrackObject : MonoBehaviour {
     {
         mCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
         rt = GetComponent<RectTransform> ();
-        image = GetComponent<RawImage>();
-        image.enabled = false;
+        // image = GetComponent<RawImage>();
+        // image.enabled = false;
     }
     
     void Update ()
@@ -27,13 +27,13 @@ public class TrackObject : MonoBehaviour {
         {
             pos = RectTransformUtility.WorldToScreenPoint (mCamera, Obj.transform.position - relative_position);
             rt.position = pos;
-            if (image)
-                image.enabled = true;
+            // if (image)
+            //     image.enabled = true;
         }
         else
         {
-            if (image)
-                image.enabled = false;
+            // if (image)
+            //     image.enabled = false;
             // Debug.LogError (this.gameObject.name + ": No Object Attached (TrackObject)");
         }
             

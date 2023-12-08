@@ -6,6 +6,7 @@ TagManager:
   tags:
   - heart
   - ARF
+  - boneco
   layers:
   - Default
   - TransparentFX
