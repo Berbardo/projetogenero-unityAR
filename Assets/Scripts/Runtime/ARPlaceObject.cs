@@ -54,6 +54,12 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
         void PlaceObjectAt(object sender, ARRaycastHit hitPose)
         {
+            bool isOverUI = UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject();
+
+            if (isOverUI) {
+                return;
+            }
+
             float angle = Mathf.Atan2(Camera.main.transform.position.x - hitPose.pose.position.x, Camera.main.transform.position.z - hitPose.pose.position.z) * Mathf.Rad2Deg;
             if (m_SpawnedObject == null)
             {
