@@ -7,6 +7,10 @@ using TMPro;
 
 public class MenuController : MonoBehaviour
 {
+    public AudioClip gene_audio_clip;
+    public AudioClip sexo_audio_clip;
+    public AudioClip identidade_audio_clip;
+    public AudioClip orientacao_audio_clip;
 
     private GameObject text;
     private GameObject bar;
@@ -19,7 +23,9 @@ public class MenuController : MonoBehaviour
     private GameObject sexo;
     private GameObject orientacao;
 
-    Animator boneco_animator;
+    private GameObject boneco;
+    private Animator boneco_animator;
+    private AudioSource boneco_audio_source;
 
     // Start is called before the first frame update
     void Start()
@@ -49,8 +55,13 @@ public class MenuController : MonoBehaviour
         identidade.GetComponent<RawImage>().enabled = true;
         sexo.GetComponent<RawImage>().enabled = true;
         orientacao.GetComponent<RawImage>().enabled = true;
-        boneco_animator = GameObject.FindWithTag("boneco").GetComponent<Animator>();
+        boneco = GameObject.FindWithTag("boneco");
+        boneco_animator = boneco.GetComponent<Animator>();
+        boneco_audio_source = boneco.transform.Find("Audio Source").gameObject.GetComponent<AudioSource>();
 
+        boneco_audio_source.Stop();
+        boneco_audio_source.clip = gene_audio_clip;
+        boneco_audio_source.Play();
     }
 
     public void Reset() {
@@ -69,6 +80,8 @@ public class MenuController : MonoBehaviour
         boneco_animator.ResetTrigger("heart_trigger");
         boneco_animator.ResetTrigger("head_trigger");
         boneco_animator.SetTrigger("idle_trigger");
+        
+        boneco_audio_source.Stop();
     }
 
     public void Identidade() {
@@ -78,6 +91,10 @@ public class MenuController : MonoBehaviour
         boneco_animator.ResetTrigger("heart_trigger");
         boneco_animator.SetTrigger("head_trigger");
         boneco_animator.ResetTrigger("idle_trigger");
+
+        boneco_audio_source.Stop();
+        boneco_audio_source.clip = identidade_audio_clip;
+        boneco_audio_source.Play();
     }
 
     public void Orientacao() {
@@ -87,6 +104,10 @@ public class MenuController : MonoBehaviour
         boneco_animator.SetTrigger("heart_trigger");
         boneco_animator.ResetTrigger("head_trigger");
         boneco_animator.ResetTrigger("idle_trigger");
+        
+        boneco_audio_source.Stop();
+        boneco_audio_source.clip = orientacao_audio_clip;
+        boneco_audio_source.Play();
     }
 
     public void Sexo() {
@@ -96,6 +117,10 @@ public class MenuController : MonoBehaviour
         boneco_animator.ResetTrigger("heart_trigger");
         boneco_animator.ResetTrigger("head_trigger");
         boneco_animator.SetTrigger("idle_trigger");
+        
+        boneco_audio_source.Stop();
+        boneco_audio_source.clip = sexo_audio_clip;
+        boneco_audio_source.Play();
     }
 
     public void Expressao() {
