@@ -11,6 +11,7 @@ public class MenuController : MonoBehaviour
     public AudioClip sexo_audio_clip;
     public AudioClip identidade_audio_clip;
     public AudioClip orientacao_audio_clip;
+    public AudioClip expressao_audio_clip;
 
     private GameObject text;
     private GameObject bar;
@@ -20,10 +21,11 @@ public class MenuController : MonoBehaviour
     private GameObject confirmar_text;
     private GameObject previous_page_button;
     private GameObject next_page_button;
-    
+
     private GameObject identidade;
     private GameObject sexo;
     private GameObject orientacao;
+    private GameObject expressao;
 
     private GameObject boneco;
     private Animator boneco_animator;
@@ -49,14 +51,18 @@ public class MenuController : MonoBehaviour
         identidade = GameObject.Find("Identity").gameObject;
         sexo = GameObject.Find("Sex").gameObject;
         orientacao = GameObject.Find("Orientation").gameObject;
+        expressao = GameObject.Find("Expressao").gameObject;
 
         ResetPage();
     }
 
-    void Update() {
-        if (!boneco) {
+    void Update()
+    {
+        if (!boneco)
+        {
             boneco = GameObject.FindWithTag("boneco");
-            if (boneco) {
+            if (boneco)
+            {
                 confirmar = gameObject.transform.Find("Confirmar").gameObject;
                 confirmar_text = confirmar.transform.Find("Text").gameObject;
                 confirmar.GetComponent<Image>().enabled = true;
@@ -66,7 +72,8 @@ public class MenuController : MonoBehaviour
         }
     }
 
-    public void Confirmar() {
+    public void Confirmar()
+    {
         confirmar.GetComponent<Image>().enabled = false;
         confirmar.GetComponent<Button>().enabled = false;
         confirmar_text.GetComponent<TextMeshProUGUI>().enabled = false;
@@ -78,6 +85,7 @@ public class MenuController : MonoBehaviour
         identidade.GetComponent<RawImage>().enabled = true;
         sexo.GetComponent<RawImage>().enabled = true;
         orientacao.GetComponent<RawImage>().enabled = true;
+        expressao.GetComponent<RawImage>().enabled = true;
         boneco = GameObject.FindWithTag("boneco");
         boneco_animator = boneco.GetComponent<Animator>();
         boneco_audio_source = boneco.transform.Find("Audio Source").gameObject.GetComponent<AudioSource>();
@@ -90,7 +98,8 @@ public class MenuController : MonoBehaviour
         ResetPage();
     }
 
-    public void Reset() {
+    public void Reset()
+    {
         confirmar.GetComponent<Image>().enabled = true;
         confirmar.GetComponent<Button>().enabled = true;
         confirmar_text.GetComponent<TextMeshProUGUI>().enabled = true;
@@ -102,19 +111,21 @@ public class MenuController : MonoBehaviour
         identidade.GetComponent<RawImage>().enabled = false;
         sexo.GetComponent<RawImage>().enabled = false;
         orientacao.GetComponent<RawImage>().enabled = false;
+        expressao.GetComponent<RawImage>().enabled = false;
 
         boneco_animator.ResetTrigger("heart_trigger");
         boneco_animator.ResetTrigger("head_trigger");
         boneco_animator.SetTrigger("idle_trigger");
-        
+
         boneco_audio_source.Stop();
 
         ResetPage();
     }
 
-    public void Identidade() {
+    public void Identidade()
+    {
         bar_text.GetComponent<Text>().text = "Identidade de Gênero";
-        smstext.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+        smstext.text = "Texto placeholder para identidade de gênero: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
         boneco_animator.ResetTrigger("heart_trigger");
         boneco_animator.SetTrigger("head_trigger");
@@ -127,14 +138,15 @@ public class MenuController : MonoBehaviour
         ResetPage();
     }
 
-    public void Orientacao() {
+    public void Orientacao()
+    {
         bar_text.GetComponent<Text>().text = "Orientação Sexual";
-        smstext.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+        smstext.text = "Texto placeholder para orientação sexual: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
         boneco_animator.SetTrigger("heart_trigger");
         boneco_animator.ResetTrigger("head_trigger");
         boneco_animator.ResetTrigger("idle_trigger");
-        
+
         boneco_audio_source.Stop();
         boneco_audio_source.clip = orientacao_audio_clip;
         boneco_audio_source.Play();
@@ -142,14 +154,15 @@ public class MenuController : MonoBehaviour
         ResetPage();
     }
 
-    public void Sexo() {
+    public void Sexo()
+    {
         bar_text.GetComponent<Text>().text = "Sexo";
-        smstext.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+        smstext.text = "Texto placeholder para sexo: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
         boneco_animator.ResetTrigger("heart_trigger");
         boneco_animator.ResetTrigger("head_trigger");
         boneco_animator.SetTrigger("idle_trigger");
-        
+
         boneco_audio_source.Stop();
         boneco_audio_source.clip = sexo_audio_clip;
         boneco_audio_source.Play();
@@ -157,18 +170,24 @@ public class MenuController : MonoBehaviour
         ResetPage();
     }
 
-    public void Expressao() {
+    public void Expressao()
+    {
         bar_text.GetComponent<Text>().text = "Expressão de Gênero";
-        smstext.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+        smstext.text = "Texto placeholder para expressão de gênero: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
         boneco_animator.ResetTrigger("heart_trigger");
         boneco_animator.ResetTrigger("head_trigger");
         boneco_animator.SetTrigger("idle_trigger");
 
+        boneco_audio_source.Stop();
+        boneco_audio_source.clip = expressao_audio_clip;
+        boneco_audio_source.Play();
+
         ResetPage();
     }
 
-    public void NextPage() {
+    public void NextPage()
+    {
         int totalpages = smstext.textInfo.pageCount;
 
         if (currentpage < totalpages)
@@ -181,7 +200,8 @@ public class MenuController : MonoBehaviour
         StartCoroutine(ShowOrHidePageButtons());
     }
 
-    public void PreviousPage() {
+    public void PreviousPage()
+    {
         int totalpages = smstext.textInfo.pageCount;
 
         if (currentpage > 1)
@@ -193,14 +213,16 @@ public class MenuController : MonoBehaviour
         StartCoroutine(ShowOrHidePageButtons());
     }
 
-    private void ResetPage() {
+    private void ResetPage()
+    {
         currentpage = 1;
         smstext.pageToDisplay = 1;
 
         StartCoroutine(ShowOrHidePageButtons());
     }
 
-    private IEnumerator ShowOrHidePageButtons() {
+    private IEnumerator ShowOrHidePageButtons()
+    {
 
         yield return new WaitForSeconds(0.001F);
         int totalpages = smstext.textInfo.pageCount;
@@ -210,12 +232,14 @@ public class MenuController : MonoBehaviour
         next_page_button.GetComponent<RawImage>().enabled = false;
         next_page_button.GetComponent<Button>().enabled = false;
 
-        if (currentpage < totalpages) {
+        if (currentpage < totalpages)
+        {
             next_page_button.GetComponent<RawImage>().enabled = true;
             next_page_button.GetComponent<Button>().enabled = true;
         }
 
-        if (currentpage > 1) {
+        if (currentpage > 1)
+        {
             previous_page_button.GetComponent<RawImage>().enabled = true;
             previous_page_button.GetComponent<Button>().enabled = true;
         }
